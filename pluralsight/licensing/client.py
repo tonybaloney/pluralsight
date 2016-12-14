@@ -14,6 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__author__ = 'Anthony Shaw'
-__email__ = 'anthonyshaw@apache.org'
-__version__ = '0.1.0'
+from invites import InvitesClient
+import requests
+
+
+class LicensingAPIClient(object):
+    def __init__(self, plan, api_key):
+        self._plan = plan
+        self._api_key = api_key
+        
+        self.session = requests.Session()
+        self.session.headers.update({'Authorization': api_key})
+        
+        self.clients = InvitesClient(self)
+
+    def get(uri):
+        return self.session.get("{0}/{1}".format(self.base_url, uri))

@@ -14,6 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__author__ = 'Anthony Shaw'
-__email__ = 'anthonyshaw@apache.org'
-__version__ = '0.1.0'
+
+class InvitesClient(object):
+    def __init__(self, client):
+        self.client = client
+        
+    def get_all_invites():
+        invites = self.client.get('invites')
+        return invites['data']
+
+    def get_invite(id):
+        invite = self.client.get('invites/{0}'.format(id))
+        return invite['data']
