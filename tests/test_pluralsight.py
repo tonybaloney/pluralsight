@@ -6,11 +6,11 @@ test_pluralsight
 ----------------------------------
 
 Tests for `pluralsight` module.
+
+This does nothing, its a placeholder
 """
 
 import unittest
-
-from pluralsight import pluralsight
 
 
 class TestPluralsight(unittest.TestCase):
