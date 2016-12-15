@@ -15,18 +15,21 @@ pluralsight
 
 Pluralsight client library for API management
 
-* Free software: ISC license
+* Free software: Apache-2 license
 * Documentation: https://pluralsight.readthedocs.org.
 
 Features
 --------
 
-* TODO
+* Invitation management using the license API
 
-Credits
----------
+Usage
+-----
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+.. code-block:: python
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+    from pluralsight.licensing import LicensingAPIClient
+
+    client = LicensingAPIClient(plan, api_key)
+    
+    invites = client.invites.get_all_invites()
