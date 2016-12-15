@@ -21,26 +21,31 @@ from .invites import InvitesClient
 from .users import UsersClient
 from .teams import TeamsClient
 
+BASE_URL = "https://app.pluralsight.com/plans/api/license/v1/{0}"
+
 
 class LicensingAPIClient(object):
     def __init__(self, plan, api_key):
         self._plan = plan
         self._api_key = api_key
-        
-        self.base_url = "https://app.pluralsight.com/plans/api/license/v1/{0}".format(plan)
-        
+
+        self.base_url = BASE_URL.format(plan)
+
         self.session = requests.Session()
-        self.session.headers.update({'Accept': 'application/json', 'Authorization': "Token {0}".format(api_key)})
-        
+        self.session.headers.update(
+            {'Accept': 'application/json',
+             'Authorization': "Token {0}".format(api_key)})
+
         self.invites = InvitesClient(self)
         self.users = UsersClient(self)
         self.teams = TeamsClient(self)
 
     def get(self, uri, params=None):
         try:
-            result = self.session.get("{0}/{1}".format(self.base_url, uri), params=params)
+            result = self.session.get("{0}/{1}".format(self.base_url, uri),
+                                      params=params)
             result.raise_for_status()
-            
+
             return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e)
@@ -49,16 +54,16 @@ class LicensingAPIClient(object):
         try:
             result = self.session.post("{0}/{1}".format(self.base_url, uri))
             result.raise_for_status()
-            
+
             return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e)
-        
+
     def put(self, uri):
         try:
             result = self.session.put("{0}/{1}".format(self.base_url, uri))
             result.raise_for_status()
-            
+
             return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e)

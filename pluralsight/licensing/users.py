@@ -29,16 +29,16 @@ class UsersClient(object):
 
         :param first_name: Filter by first name
         :type  first_name: ``str``
-        
+
         :param last_name: Filter by last name
         :type  last_name: ``str``
-        
+
         :param email: Filter by email
         :type  email: ``str``
-        
+
         :param note: Filter by note
         :type  note: ``str``
-        
+
         :param team_id: Filter by team ID
         :type  team_id: ``str``
 
@@ -46,7 +46,7 @@ class UsersClient(object):
         :rtype: ``list`` of :class:`User`
         """
         params = {}
-        
+
         if first_name is not None:
             params['firstName'] = first_name
         if last_name is not None:
@@ -57,7 +57,7 @@ class UsersClient(object):
             params['note'] = note
         if team_id is not None:
             params['teamId'] = team_id
-        
+
         users = self.client.get('users', params=params)
         return [self._to_user(i) for i in users['data']]
 
@@ -91,7 +91,7 @@ class UsersClient(object):
         :rtype: :class:`User`
         """
         data = {
-            'data' : {
+            'data': {
                 'teamId': team_id,
                 'note': note
             }

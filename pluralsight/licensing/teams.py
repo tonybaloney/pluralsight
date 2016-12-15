@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import arrow
 from pluralsight.models.team import Team
 
 
@@ -33,10 +32,10 @@ class TeamsClient(object):
         :rtype: ``list`` of :class:`Team`
         """
         params = {}
-        
+
         if name is not None:
             params['name'] = name
-        
+
         teams = self.client.get('teams', params=params)
         return [self._to_team(i) for i in teams['data']]
 

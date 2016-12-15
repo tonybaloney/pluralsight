@@ -62,7 +62,7 @@ class InvitesClient(object):
         :rtype: :class:`Invite`
         """
         data = {
-            'data' : {
+            'data': {
                 'email': email,
                 'teamId': team_id,
                 'note': note
@@ -85,7 +85,7 @@ class InvitesClient(object):
         :rtype: :class:`Invite`
         """
         data = {
-            'data' : {
+            'data': {
                 'note': note
             }
         }

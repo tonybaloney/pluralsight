@@ -16,7 +16,6 @@
 
 
 class User(object):
-
     def __init__(self,
                  id,
                  team_id,
@@ -32,4 +31,3 @@ class User(object):
         self.email = email
         self.note = note
         self.start_date = start_date
-        
