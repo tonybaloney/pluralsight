@@ -40,3 +40,21 @@ class LicensingAPIClient(object):
             return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e)
+
+    def post(self, uri):
+        try:
+            result = self.session.post("{0}/{1}".format(self.base_url, uri))
+            result.raise_for_status()
+            
+            return result.json()
+        except requests.HTTPError as e:
+            raise PluralsightApiException(e)
+        
+    def put(self, uri):
+        try:
+            result = self.session.put("{0}/{1}".format(self.base_url, uri))
+            result.raise_for_status()
+            
+            return result.json()
+        except requests.HTTPError as e:
+            raise PluralsightApiException(e)
