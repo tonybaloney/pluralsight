@@ -98,7 +98,7 @@ class ReportsAPIClient(object):
 
         self._download_file("course-usage/{0}".format(plan), path, params)
 
-    def _download_file(self, path, url, params=None):
+    def _download_file(self, url, path, params=None):
         local_filename = url.split('/')[-1]
         try:
             r = self.session.get("{0}{1}".format(self.base_url, url),
