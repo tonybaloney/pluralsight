@@ -19,6 +19,7 @@ import requests
 from pluralsight.exceptions import PluralsightApiException
 from .invites import InvitesClient
 from .users import UsersClient
+from .teams import TeamsClient
 
 
 class LicensingAPIClient(object):
@@ -33,6 +34,7 @@ class LicensingAPIClient(object):
         
         self.invites = InvitesClient(self)
         self.users = UsersClient(self)
+        self.teams = TeamsClient(self)
 
     def get(self, uri, params=None):
         try:
