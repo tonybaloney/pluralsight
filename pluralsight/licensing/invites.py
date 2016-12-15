@@ -18,11 +18,11 @@
 class InvitesClient(object):
     def __init__(self, client):
         self.client = client
-        
-    def get_all_invites():
+
+    def get_all_invites(self):
         invites = self.client.get('invites')
         return invites['data']
 
-    def get_invite(id):
+    def get_invite(self, id):
         invite = self.client.get('invites/{0}'.format(id))
         return invite['data']

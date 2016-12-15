@@ -14,8 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from invites import InvitesClient
 import requests
+
+from pluralsight.exceptions import PluralsightApiException
+from .invites import InvitesClient
 
 
 class LicensingAPIClient(object):
@@ -23,10 +25,18 @@ class LicensingAPIClient(object):
         self._plan = plan
         self._api_key = api_key
         
-        self.session = requests.Session()
-        self.session.headers.update({'Authorization': api_key})
+        self.base_url = "https://app.pluralsight.com/plans/api/license/v1/{0}".format(plan)
         
-        self.clients = InvitesClient(self)
+        self.session = requests.Session()
+        self.session.headers.update({'Accept': 'application/json', 'Authorization': "Token {0}".format(api_key)})
+        
+        self.invites = InvitesClient(self)
 
-    def get(uri):
-        return self.session.get("{0}/{1}".format(self.base_url, uri))
+    def get(self, uri):
+        try:
+            result = self.session.get("{0}/{1}".format(self.base_url, uri))
+            result.raise_for_status()
+            
+            return result.json()
+        except requests.HTTPError as e:
+            raise PluralsightApiException(e)
