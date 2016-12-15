@@ -18,6 +18,9 @@ from pluralsight.models.team import Team
 
 
 class TeamsClient(object):
+    """
+    Teams API
+    """
     def __init__(self, client):
         self.client = client
 

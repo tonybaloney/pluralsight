@@ -23,7 +23,19 @@ BASE_URL = "https://app.pluralsight.com/plans/api/reports/v1/"
 
 
 class ReportsAPIClient(object):
+    """
+    Reports API client
+    """
     def __init__(self, plan, api_key):
+        """
+        Instantiate a new reports API client
+        
+        :param plan: The plan name
+        :type  plan: ``str``
+        
+        :param api_key: The API token (from the pluralsight team)
+        :type  api_key: ``str``
+        """
         self._plan = plan
         self._api_key = api_key
 

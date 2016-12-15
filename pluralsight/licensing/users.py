@@ -19,6 +19,9 @@ from pluralsight.models.user import User
 
 
 class UsersClient(object):
+    """
+    Users API
+    """
     def __init__(self, client):
         self.client = client
 

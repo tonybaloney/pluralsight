@@ -19,6 +19,9 @@ from pluralsight.models.invite import Invite
 
 
 class InvitesClient(object):
+    """
+    Invites API
+    """
     def __init__(self, client):
         self.client = client
 
