@@ -18,6 +18,7 @@ import requests
 
 from pluralsight.exceptions import PluralsightApiException
 from .invites import InvitesClient
+from .users import UsersClient
 
 
 class LicensingAPIClient(object):
@@ -31,10 +32,11 @@ class LicensingAPIClient(object):
         self.session.headers.update({'Accept': 'application/json', 'Authorization': "Token {0}".format(api_key)})
         
         self.invites = InvitesClient(self)
+        self.users = UsersClient(self)
 
-    def get(self, uri):
+    def get(self, uri, params=None):
         try:
-            result = self.session.get("{0}/{1}".format(self.base_url, uri))
+            result = self.session.get("{0}/{1}".format(self.base_url, uri), params=params)
             result.raise_for_status()
             
             return result.json()

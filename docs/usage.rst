@@ -5,7 +5,9 @@ Usage
 Licensing
 ~~~~~~~~~
 
-To use pluralsight in a project::
+To use pluralsight in a project
+
+.. code-block:: python
 
     from pluralsight.licensing import LicensingAPIClient
 

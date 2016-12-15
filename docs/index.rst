@@ -14,7 +14,8 @@ Contents:
    readme
    installation
    usage
-   invites
+   api/invites
+   api/users
    contributing
    authors
    history
