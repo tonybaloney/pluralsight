@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='pluralsight',
-    version='0.6.0',
+    version='0.7.0',
     description="Pluralsight client library for API management",
     long_description=readme + '\n\n' + history,
     author="Anthony Shaw",
@@ -32,12 +32,14 @@ setup(
     url='https://github.com/tonybaloney/pluralsight',
     packages=[
         'pluralsight',
+        'pluralsight.licensing',
+        'pluralsight.reports'
     ],
     package_dir={'pluralsight':
                  'pluralsight'},
     include_package_data=True,
     install_requires=requirements,
-    license="ISCL",
+    license="APACHE2",
     zip_safe=False,
     keywords='pluralsight',
     classifiers=[
