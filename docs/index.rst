@@ -14,6 +14,8 @@ Contents:
    readme
    installation
    usage
+   pluralsight.licensing
+   pluralsight.reports
    contributing
    authors
    history
