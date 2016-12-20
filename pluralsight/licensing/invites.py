@@ -108,10 +108,10 @@ class InvitesClient(object):
 
     def _to_invite(self, data):
         return Invite(
-            data['id'],
-            data['teamId'],
-            data['email'],
-            data['note'],
-            arrow.get(data['sendDate']),
-            arrow.get(data['expiresOn'])
+            id=data['id'],
+            email=data['email'],
+            team_id=data['teamId'],
+            note=data['note'],
+            send_date=arrow.get(data['sendDate']),
+            expires_on=arrow.get(data['expiresOn'])
         )
