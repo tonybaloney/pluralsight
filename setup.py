@@ -33,7 +33,8 @@ setup(
     packages=[
         'pluralsight',
         'pluralsight.licensing',
-        'pluralsight.reports'
+        'pluralsight.reports',
+        'pluralsight.models'
     ],
     package_dir={'pluralsight':
                  'pluralsight'},
