@@ -80,3 +80,12 @@ class LicensingAPIClient(object):
             return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e.response.text)
+
+    def delete(self, uri):
+        try:
+            result = self.session.delete("{0}/{1}".format(self.base_url, uri))
+            result.raise_for_status()
+
+            return result.json()
+        except requests.HTTPError as e:
+            raise PluralsightApiException(e.response.text)
