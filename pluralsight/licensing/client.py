@@ -62,9 +62,10 @@ class LicensingAPIClient(object):
         except requests.HTTPError as e:
             raise PluralsightApiException(e)
 
-    def post(self, uri):
+    def post(self, uri, data=None):
         try:
-            result = self.session.post("{0}/{1}".format(self.base_url, uri))
+            result = self.session.post("{0}/{1}".format(self.base_url, uri),
+                                       data=data)
             result.raise_for_status()
 
             return result.json()
