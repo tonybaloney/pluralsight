@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='pluralsight',
-    version='0.10.0',
+    version='0.11.0',
     description="Pluralsight client library for API management",
     long_description=readme + '\n\n' + history,
     author="Anthony Shaw",
