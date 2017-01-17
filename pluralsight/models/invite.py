@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from six.moves.urllib.parse import quote, quote_plus
+
 
 class Invite(object):
     def __init__(self,
@@ -29,3 +31,17 @@ class Invite(object):
         self.note = note
         self.send_date = send_date
         self.expires_on = expires_on
+
+    def generate_url(self, plan):
+        _redirect_url = 'https://app.pluralsight.com/plans-data/invites/{0}/{1}'.format(
+            plan,
+            self.id
+        )
+        _base_url = 'https://app.pluralsight.com/id/createaccount/business' \
+            '?firstName={0}&lastName={1}&companyEmail={2}&redirectTo={3}'.format(
+            '',
+            '',
+            quote(self.email),
+            quote_plus(_redirect_url)
+        )
+        return _base_url

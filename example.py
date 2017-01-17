@@ -12,8 +12,10 @@ client = LicensingAPIClient(plan, api_key)
 
 # Get all invites
 invites = client.invites.get_all_invites()
-pprint(invites)
 
+i = [invite for invite in invites if invite.email == 'a.user@domain.com'][0]
+
+print(i.generate_url(plan))
 
 # Create  a client for the reporting API
 reports = ReportsAPIClient(plan, api_key)
