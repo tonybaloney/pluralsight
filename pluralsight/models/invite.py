@@ -33,7 +33,10 @@ class Invite(object):
         self.expires_on = expires_on
 
     def __str__(self):
-        return "Invite to {0} ({1}) with ID: {2}".format(self.email, self.note, self.id)
+        return "Invite to {0} ({1}) with ID: {2}".format(
+            self.email,
+            self.note,
+            self.id)
 
     def generate_url(self, plan):
         _redirect_url = 'https://app.pluralsight.com/plans-data/invites/{0}/{1}'.format(
@@ -42,9 +45,9 @@ class Invite(object):
         )
         _base_url = 'https://app.pluralsight.com/id/createaccount/business' \
             '?firstName={0}&lastName={1}&companyEmail={2}&redirectTo={3}'.format(
-            '',
-            '',
-            quote(self.email),
-            quote_plus(_redirect_url)
-        )
+                '',
+                '',
+                quote(self.email),
+                quote_plus(_redirect_url)
+            )
         return _base_url

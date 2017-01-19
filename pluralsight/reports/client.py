@@ -29,10 +29,10 @@ class ReportsAPIClient(object):
     def __init__(self, plan, api_key):
         """
         Instantiate a new reports API client
-        
+
         :param plan: The plan name
         :type  plan: ``str``
-        
+
         :param api_key: The API token (from the pluralsight team)
         :type  api_key: ``str``
         """
