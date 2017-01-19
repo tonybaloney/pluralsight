@@ -24,6 +24,7 @@ Features
 * Invitation management using the license API
 * User management using the license API
 * Team information
+* Invite URL generation
 
 Usage
 -----
