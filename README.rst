@@ -17,7 +17,7 @@ Pluralsight client library for API management
 
 * Free software: Apache-2 license
 * Documentation: https://pluralsight.readthedocs.org.
-banana!
+banana banana!
 Features
 --------
 
