@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from six.moves.urllib.parse import quote, quote_plus
+import six
 
 
 class Invite(object):
@@ -47,7 +47,7 @@ class Invite(object):
             '?firstName={0}&lastName={1}&companyEmail={2}&redirectTo={3}'.format(
                 '',
                 '',
-                quote(self.email),
-                quote_plus(_redirect_url)
+                six.moves.urllib.parse.quote(self.email),
+                six.moves.urllib.parse.quote_plus(_redirect_url)
             )
         return _base_url
