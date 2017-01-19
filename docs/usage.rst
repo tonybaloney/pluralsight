@@ -8,6 +8,7 @@ Licensing
 To use pluralsight in a project
 
 .. code-block:: python
+    :linenos:
 
     from pluralsight.licensing import LicensingAPIClient
 
@@ -21,3 +22,15 @@ To use pluralsight in a project
     
     # teams
     teams = client.teams.get_all_teams()
+
+Invites
+~~~~~~~
+
+.. literalinclude:: ../examples/get_link_for_email.py
+   :language: python
+   :linenos:
+
+
+.. literalinclude:: ../examples/unregistered_users.py
+   :language: python
+   :linenos:
