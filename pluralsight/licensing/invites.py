@@ -32,7 +32,32 @@ class InvitesClient(object):
         :return: A list of :class:`Invite`
         :rtype: ``list`` of :class:`Invite`
         """
-        invites = self.client.get('invites')
+        return self.get_invites()
+
+    def get_invites(self, email=None, note=None, team_id=None):
+        """
+        Get invitations matching certain filters
+
+        :param email: The users' email address
+        :type  email: ``str``
+
+        :param team_id: The team identifier
+        :type  team_id: ``str``
+
+        :param note: Additional notes on the user
+        :type  note: ``str``
+
+        :return: A list of :class:`Invite`
+        :rtype: ``list`` of :class:`Invite`
+        """
+        params = {}
+        if email is not None:
+            params['email'] = email
+        if note is not None:
+            params['note'] = note
+        if team_id is not None:
+            params['teamId'] = team_id
+        invites = self.client.get('invites', params=params)
         return [self._to_invite(i) for i in invites['data']]
 
     def get_invite(self, id):
