@@ -2,6 +2,11 @@
 History
 =======
 
+0.16.0 (20th Jan 2017)
+----------------------
+
+* Added string representations for the core models
+
 0.15.0 (19th Jan 2017)
 ----------------------
 

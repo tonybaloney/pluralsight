@@ -32,6 +32,9 @@ class Invite(object):
         self.send_date = send_date
         self.expires_on = expires_on
 
+    def __str__(self):
+        return "Invite to {0} ({1}) with ID: {2}".format(self.email, self.note, self.id)
+
     def generate_url(self, plan):
         _redirect_url = 'https://app.pluralsight.com/plans-data/invites/{0}/{1}'.format(
             plan,

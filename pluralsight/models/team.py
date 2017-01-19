@@ -22,3 +22,6 @@ class Team(object):
                  name):
         self.id = id
         self.name = name
+
+    def __str__(self):
+        return "Team '{0}' ({1})".format(self.name, self.id)

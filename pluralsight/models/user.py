@@ -31,3 +31,11 @@ class User(object):
         self.email = email
         self.note = note
         self.start_date = start_date
+
+    def __str__(self):
+        return "User '{0} {1}' {2} ({3})".format(
+            self.first_name,
+            self.last_name,
+            self.email,
+            self.id
+        )
