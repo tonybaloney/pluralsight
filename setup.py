@@ -19,7 +19,8 @@ requirements = [
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+   'pytest',
+   'requests_staticmock'
 ]
 
 setup(
@@ -40,13 +41,13 @@ setup(
                  'pluralsight'},
     include_package_data=True,
     install_requires=requirements,
-    license="APACHE2",
+    license="Apache License (2.0)",
     zip_safe=False,
     keywords='pluralsight',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: ISC License (ISCL)',
+        'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.6',
@@ -56,6 +57,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
+    setup_requires=['pytest-runner']
 )

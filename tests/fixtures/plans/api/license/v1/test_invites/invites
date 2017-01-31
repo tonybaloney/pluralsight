@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "bc30c000-eeee-11e6-8088-111111111111",
+      "email": "a.guy@test.com",
+      "teamId": null,
+      "note": "Services",
+      "sendDate": "2017-01-04T00:00:00+00:00",
+      "expiresOn": "2017-02-18T00:00:00+00:00"
+    },
+    {
+      "id": "bc30c000-dddd-11e6-80c5-46f6aaaaaaaa",
+      "email": "the.guy@email.com",
+      "teamId": null,
+      "note": "Professional Services",
+      "sendDate": "2017-01-04T00:00:00+00:00",
+      "expiresOn": "2017-02-18T00:00:00+00:00"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Licensed to the Apache Software Foundation (ASF) under one or more
+# Licensed to Anthony Shaw (anthonyshaw@apache.org) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -60,7 +60,7 @@ class LicensingAPIClient(object):
 
             return result.json()
         except requests.HTTPError as e:
-            raise PluralsightApiException(e.response.text)
+            raise PluralsightApiException(e.response.text, uri)
 
     def post(self, uri, data=None):
         try:
