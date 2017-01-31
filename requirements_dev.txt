@@ -11,4 +11,5 @@ pytest
 coveralls
 six
 requests
+requests_staticmock
 arrow

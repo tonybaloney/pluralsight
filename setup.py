@@ -19,7 +19,8 @@ requirements = [
 ]
 
 test_requirements = [
-   'pytest'
+   'pytest',
+   'requests_staticmock'
 ]
 
 setup(
