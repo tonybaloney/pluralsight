@@ -21,7 +21,7 @@ TEST_URL = 'https://app.pluralsight.com'
 class TestMockClient(BaseMockClass):
     def _plans_api_license_v1_plana_headers(self, request, headers):
         if 'Authorization' not in headers.keys() or \
-            TEST_API_KEY not in headers['Authorization']:
+                TEST_API_KEY not in headers['Authorization']:
             return json.dumps({'good': False})
         else:
             return json.dumps({'good': True})
@@ -79,40 +79,48 @@ def test_headers():
         response = client.get('headers')
         assert response['good']
 
+
 def test_get_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         response = client.get('get')
         assert response['good']
+
 
 def test_get_bad_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         with pytest.raises(PluralsightApiException):
             client.get('get/bad')
 
+
 def test_post_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         response = client.post('post')
         assert response['good']
+
 
 def test_post_bad_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         with pytest.raises(PluralsightApiException):
             client.post('post/bad')
 
+
 def test_put_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         response = client.put('put')
         assert response['good']
+
 
 def test_put_bad_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
         with pytest.raises(PluralsightApiException):
             client.put('put/bad')
 
+
 def test_delete_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):
-        response = client.delete('delete')
+        client.delete('delete')
         assert True
+
 
 def test_delete_bad_request():
     with mock_session_with_class(client.session, TestMockClient, TEST_URL):

@@ -15,18 +15,14 @@
 # limitations under the License.
 
 from requests_staticmock import (Adapter,
-                                 ClassAdapter,
                                  BaseMockClass,
                                  mock_session_with_class)
 import json
 from pluralsight.licensing.client import LicensingAPIClient
-from pluralsight.exceptions import PluralsightApiException
 
 TEST_PLAN = 'test_invites'
 TEST_API_KEY = 'api_key'
 TEST_URL = 'https://app.pluralsight.com'
-
-
 
 
 def test_get_all_invites():
@@ -45,6 +41,7 @@ def test_get_all_invites():
     assert invites[0].send_date.timestamp == 1483488000
     assert invites[0].expires_on.timestamp == 1487376000
 
+
 def test_get_invites_filter():
     """
     Test that get invites with filter does apply the right params
@@ -52,11 +49,12 @@ def test_get_invites_filter():
     _test_email = 'test.email@domain.com'
     _test_note = 'test note'
     _test_team = 'team 1'
+
     class TestMockClient(BaseMockClass):
         def _plans_api_license_v1_test_invites_invites(self, params, headers):
             if params['email'] == _test_email and \
                 params['note'] == _test_note and \
-                params['teamId'] == _test_team:
+                    params['teamId'] == _test_team:
                 return json.dumps({'data': [{
                     "id": "bc30c000-dddd-11e6-80c5-46f6aaaaaaaa",
                     "email": _test_email,
@@ -68,9 +66,13 @@ def test_get_invites_filter():
 
     client = LicensingAPIClient(TEST_PLAN, TEST_API_KEY)
 
-    with mock_session_with_class(client.session, TestMockClient, 'https://app.pluralsight.com'):
-        invites = client.invites.get_invites(email=_test_email, note=_test_note, team_id=_test_team)
+    with mock_session_with_class(client.session, TestMockClient,
+                                 'https://app.pluralsight.com'):
+        invites = client.invites.get_invites(email=_test_email,
+                                             note=_test_note,
+                                             team_id=_test_team)
         assert len(invites) == 1
+
 
 def test_get_invite():
     """
