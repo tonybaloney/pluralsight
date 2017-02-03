@@ -19,6 +19,8 @@ from requests_staticmock import (Adapter,
                                  mock_session_with_class)
 import json
 import csv
+import pytest
+from pluralsight.exceptions import PluralsightApiException
 from pluralsight.reports.client import ReportsAPIClient, BASE_URL
 
 TEST_PLAN = 'test-plan'
@@ -64,3 +66,15 @@ def test_download_course_usage_report():
         data = [d for d in reader]
         assert data[0]['FirstName'] == 'Sam'
         assert data[1]['FirstName'] == 'Alexey'
+
+
+def test_get_bad_request():
+    class TestMockClient(BaseMockClass):
+        def _plans_api_reports_v1_users_test_plan(self, request, method):
+            return StaticResponseFactory.BadResponse(
+                request=request,
+                body=b('bad request'),
+                status_code=500)
+    with mock_session_with_class(client.session, TestMockClient, TEST_URL):
+        with pytest.raises(PluralsightApiException):
+            client.download_user_report(TEST_PLAN, '')
