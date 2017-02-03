@@ -55,8 +55,10 @@ class ReportsAPIClient(object):
 
         :param path: Path to the downloaded CSV
         :type  path: ``str``
+
+        :returns: The filename
         """
-        self._download_file("users/{0}".format(plan), path)
+        return self._download_file("users/{0}".format(plan), path)
 
     def download_course_completion_report(self, plan, path,
                                           start_date=None, end_date=None):
@@ -74,6 +76,8 @@ class ReportsAPIClient(object):
 
         :param end_date: (optional) End date in format YYYY-MM-DD
         :type  end_date: ``str``
+
+        :returns: The filename
         """
         params = {}
 
@@ -82,7 +86,7 @@ class ReportsAPIClient(object):
         if end_date is not None:
             params['endDate'] = end_date
 
-        self._download_file("course-completion/{0}".format(plan), path, params)
+        return self._download_file("course-completion/{0}".format(plan), path, params)
 
     def download_course_usage_report(self, plan, path,
                                      start_date=None, end_date=None):
@@ -100,6 +104,8 @@ class ReportsAPIClient(object):
 
         :param end_date: (optional) End date in format YYYY-MM-DD
         :type  end_date: ``str``
+        
+        :returns: The filename
         """
         params = {}
 
@@ -108,7 +114,7 @@ class ReportsAPIClient(object):
         if end_date is not None:
             params['endDate'] = end_date
 
-        self._download_file("course-usage/{0}".format(plan), path, params)
+        return self._download_file("course-usage/{0}".format(plan), path, params)
 
     def _download_file(self, url, path, params=None):
         local_filename = url.split('/')[-1]
