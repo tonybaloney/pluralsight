@@ -43,9 +43,6 @@ def test_get_teams_filter():
     """
     Test that get invites with filter does apply the right params
     """
-    _test_email = 'test.email@domain.com'
-    _test_note = 'test note'
-    _test_team = 'team 1'
 
     class TestMockClient(BaseMockClass):
         def _plans_api_license_v1_test_teams_teams(self, params, headers):

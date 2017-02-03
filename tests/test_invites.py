@@ -40,7 +40,8 @@ def test_get_all_invites():
     assert invites[0].note == 'Services'
     assert invites[0].send_date.timestamp == 1483488000
     assert invites[0].expires_on.timestamp == 1487376000
-    assert str(invites[0]) == "Invite to a.guy@test.com (Services) with ID: bc30c000-eeee-11e6-8088-111111111111"
+    assert str(invites[0]) == "Invite to a.guy@test.com (Services)" \
+        "with ID: bc30c000-eeee-11e6-8088-111111111111"
     assert 'https://app.pluralsight.com/' in invites[0].generate_url('test')
 
 
@@ -100,7 +101,7 @@ def test_create_invite():
     client = LicensingAPIClient('test_create_invite', TEST_API_KEY)
     special_adapter = Adapter('tests/fixtures')
     client.session.mount('https://app.pluralsight.com', special_adapter)
-    
+
     invite = client.invites.invite_user('test@test.com', None, "test note")
     assert invite.id == "bc30c000-eeee-11e6-8088-111111111111"
     assert invite.email == 'a.guy@test.com'
@@ -117,8 +118,9 @@ def test_update_invite():
     client = LicensingAPIClient('test_invite', TEST_API_KEY)
     special_adapter = Adapter('tests/fixtures')
     client.session.mount('https://app.pluralsight.com', special_adapter)
-    
-    invite = client.invites.update_invite("bc30c000-eeee-11e6-8088-111111111111", "test note")
+
+    invite = client.invites.update_invite("bc30c000-eeee-11e6-8088-111111111111",
+                                          "test note")
     assert invite.id == "bc30c000-eeee-11e6-8088-111111111111"
     assert invite.email == 'a.guy@test.com'
     assert invite.team_id is None
@@ -134,4 +136,4 @@ def test_cancel_invite():
     client = LicensingAPIClient('test_invite', TEST_API_KEY)
     special_adapter = Adapter('tests/fixtures')
     client.session.mount('https://app.pluralsight.com', special_adapter)
-    invite = client.invites.cancel_invite("bc30c000-eeee-11e6-8088-111111111111")
+    client.invites.cancel_invite("bc30c000-eeee-11e6-8088-111111111111")

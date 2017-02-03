@@ -104,7 +104,7 @@ class ReportsAPIClient(object):
 
         :param end_date: (optional) End date in format YYYY-MM-DD
         :type  end_date: ``str``
-        
+
         :returns: The filename
         """
         params = {}

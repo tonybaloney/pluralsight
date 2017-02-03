@@ -17,7 +17,8 @@
 from requests_staticmock import (Adapter,
                                  BaseMockClass,
                                  mock_session_with_class)
-import json
+from requests_staticmock.responses import StaticResponseFactory
+from six import b
 import csv
 import pytest
 from pluralsight.exceptions import PluralsightApiException
@@ -32,10 +33,10 @@ client = ReportsAPIClient(TEST_PLAN, TEST_API_KEY)
 special_adapter = Adapter('tests/fixtures')
 client.session.mount('https://app.pluralsight.com', special_adapter)
 
-    
+
 def test_base_url():
-    assert BASE_URL in client.base_url    
-    
+    assert BASE_URL in client.base_url
+
 
 def test_download_user_report():
     report_name = client.download_user_report(TEST_PLAN, '')

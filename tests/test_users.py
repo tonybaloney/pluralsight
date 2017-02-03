@@ -41,7 +41,8 @@ def test_get_all_users():
     assert users[0].email == "email-25+9040@email.com"
     assert users[0].note == 'test note'
     assert users[0].start_date.timestamp == 1463020267
-    assert str(users[0]) == "User 'first-25 last-25' email-25+9040@email.com (0bbdccac-dad1-4488-a69d-2ea78bf43280)"
+    assert str(users[0]) == "User 'first-25 last-25' email-25+9040@email.com" \
+        "(0bbdccac-dad1-4488-a69d-2ea78bf43280)"
 
 
 def test_get_users_filter():
@@ -61,7 +62,7 @@ def test_get_users_filter():
             assert params['email'] == _email
             assert params['note'] == _note
             assert params['teamId'] == _team_id
-            
+
             return json.dumps({'data': [{
                     "id": "0bbdccac-dad1-4488-a69d-2ea78bf43280",
                     "teamId": "2b947975-482a-4791-aa40-e199b3ca8738",
@@ -110,7 +111,7 @@ def test_update_user():
     client = LicensingAPIClient('test_user', TEST_API_KEY)
     special_adapter = Adapter('tests/fixtures')
     client.session.mount('https://app.pluralsight.com', special_adapter)
-    
+
     user = client.users.update_user(id="3d4a29f7-aedc-46b8-bada-f84d04f98679",
                                     team_id="1234512-aedc-46b8-bada-f84d04f98679",
                                     note="test note")
