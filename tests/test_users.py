@@ -41,7 +41,7 @@ def test_get_all_users():
     assert users[0].email == "email-25+9040@email.com"
     assert users[0].note == 'test note'
     assert users[0].start_date.timestamp == 1463020267
-    assert str(users[0]) == "User 'first-25 last-25' email-25+9040@email.com" \
+    assert str(users[0]) == "User 'first-25 last-25' email-25+9040@email.com " \
         "(0bbdccac-dad1-4488-a69d-2ea78bf43280)"
 
 

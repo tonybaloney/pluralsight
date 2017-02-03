@@ -40,7 +40,7 @@ def test_get_all_invites():
     assert invites[0].note == 'Services'
     assert invites[0].send_date.timestamp == 1483488000
     assert invites[0].expires_on.timestamp == 1487376000
-    assert str(invites[0]) == "Invite to a.guy@test.com (Services)" \
+    assert str(invites[0]) == "Invite to a.guy@test.com (Services) " \
         "with ID: bc30c000-eeee-11e6-8088-111111111111"
     assert 'https://app.pluralsight.com/' in invites[0].generate_url('test')
 
