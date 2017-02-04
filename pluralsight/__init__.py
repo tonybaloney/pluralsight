@@ -16,4 +16,4 @@
 
 __author__ = 'Anthony Shaw'
 __email__ = 'anthonyshaw@apache.org'
-__version__ = '0.16.0'
+__version__ = '1.0.0'
