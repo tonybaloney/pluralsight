@@ -1,0 +1,3 @@
+﻿UserId,FirstName,LastName,Email,TeamName,Note,IsOnAccount,CourseId,CourseName,FirstViewDate,CompletionDate,CompletionStatus
+2378173d-edcb-4601-bf10-260a4c87c26f,Jason,Dai,jason@itaas.com,Kashif,Aperture,True,web-security-owasp-top10-big-picture,Web Security and the OWASP Top 10: The Big Picture,2016-10-05,2016-10-05,completed
+fa74ca1a-3a02-4516-bba5-d11a62d1b0f2,Alex,Aymonier,alex@itaas.com,Ops,,True,play-by-play-powershell-from-idea-to-action-jones-hicks,Play by Play: PowerShell from Idea to Action with Don Jones and Jeff Hicks,2016-11-17,2016-11-17,completed

@@ -1,0 +1,3 @@
+﻿UserId,FirstName,LastName,Email,TeamName,Note,IsOnAccount,CourseId,CourseName,ViewDate,UsageInSeconds
+c46d51cd-06ef-4657-ad45-52bb63185471,Sam,Peng,sam.peng@com,Rob,,False,owin-katana-understanding,Understanding OWIN and Katana,2016-10-07,434
+e6696a32-1f43-4bc9-aa6f-7582a00fb418,Alexey,Taran,alexey.taran@com,Vinit,,False,csharp-fundamentals-csharp5,C# Fundamentals with C# 5.0,2016-02-13,4020

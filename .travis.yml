@@ -17,6 +17,6 @@ script: python setup.py test
 matrix:
     include:
         - python: "2.7"
-          script: "flake8 pluralsight/ tests --max-line-length=90"
+          script: "flake8 pluralsight/ --max-line-length=90"
 after_success:
   - coveralls
