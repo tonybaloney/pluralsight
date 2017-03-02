@@ -77,8 +77,6 @@ class LicensingAPIClient(object):
             result = self.session.put("{0}/{1}".format(self.base_url, uri),
                                       json=data)
             result.raise_for_status()
-
-            return result.json()
         except requests.HTTPError as e:
             raise PluralsightApiException(e.response.text)
 
