@@ -1,6 +1,5 @@
-===============================
 pluralsight
-===============================
+===========
 
 .. image:: https://img.shields.io/pypi/v/pluralsight.svg
         :target: https://pypi.python.org/pypi/pluralsight

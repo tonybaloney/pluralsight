@@ -89,9 +89,6 @@ class UsersClient(object):
 
         :param note: Additional notes on the user
         :type  note: ``str``
-
-        :return: An instance :class:`User`
-        :rtype: :class:`User`
         """
         data = {
             'data': {
@@ -99,8 +96,7 @@ class UsersClient(object):
                 'note': note
             }
         }
-        user = self.client.put('users/{0}'.format(id), data=data)
-        return self._to_user(user['data'])
+        self.client.put('users/{0}'.format(id), data=data)
 
     def delete_user(self, id):
         """

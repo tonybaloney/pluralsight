@@ -108,17 +108,13 @@ class InvitesClient(object):
 
         :param note: Additional notes on the user
         :type  note: ``str``
-
-        :return: An instance :class:`Invite`
-        :rtype: :class:`Invite`
         """
         data = {
             'data': {
                 'note': note
             }
         }
-        invite = self.client.put('invites/{0}'.format(id), data=data)
-        return self._to_invite(invite['data'])
+        self.client.put('invites/{0}'.format(id), data=data)
 
     def cancel_invite(self, id):
         """
