@@ -2,6 +2,11 @@
 History
 =======
 
+1.2.0 (5th Feb 2018)
+--------------------
+
+* Fixed issue with report downloads just being named the plan instead of a CSV name
+
 0.16.0 (20th Jan 2017)
 ----------------------
 
