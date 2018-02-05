@@ -58,7 +58,7 @@ class ReportsAPIClient(object):
 
         :returns: The filename
         """
-        return self._download_file("users/{0}".format(plan), 'users.csv' path)
+        return self._download_file("users/{0}".format(plan), 'users.csv', path)
 
     def download_course_completion_report(self, plan, path,
                                           start_date=None, end_date=None):
