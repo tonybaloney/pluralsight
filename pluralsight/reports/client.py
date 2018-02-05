@@ -58,7 +58,7 @@ class ReportsAPIClient(object):
 
         :returns: The filename
         """
-        return self._download_file("users/{0}".format(plan), path)
+        return self._download_file("users/{0}".format(plan), 'users.csv' path)
 
     def download_course_completion_report(self, plan, path,
                                           start_date=None, end_date=None):
@@ -86,7 +86,7 @@ class ReportsAPIClient(object):
         if end_date is not None:
             params['endDate'] = end_date
 
-        return self._download_file("course-completion/{0}".format(plan), path, params)
+        return self._download_file("course-completion/{0}".format(plan), 'courses.csv', path, params)
 
     def download_course_usage_report(self, plan, path,
                                      start_date=None, end_date=None):
@@ -114,10 +114,9 @@ class ReportsAPIClient(object):
         if end_date is not None:
             params['endDate'] = end_date
 
-        return self._download_file("course-usage/{0}".format(plan), path, params)
+        return self._download_file("course-usage/{0}".format(plan), 'course_usage.csv', path, params)
 
-    def _download_file(self, url, path, params=None):
-        local_filename = url.split('/')[-1]
+    def _download_file(self, url, local_filename, path, params=None):
         try:
             r = self.session.get("{0}{1}".format(self.base_url, url),
                                  stream=True, params=params)
