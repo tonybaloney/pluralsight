@@ -124,14 +124,11 @@ class ReportsAPIClient(object):
     def _download_file(self, url, local_filename, path, params=None):
         try:
             r = self.session.get(
-                "{0}{1}".format(self.base_url, url), stream=True, params=params
+                "{0}{1}".format(self.base_url, url), params=params
             )
             r.raise_for_status()
-            r.encoding = "utf-8-sig"
             with open(os.path.join(path, local_filename), "w") as f:
-                for chunk in r.iter_content(chunk_size=1024, decode_unicode=True):
-                    if chunk:  # filter out keep-alive new chunks
-                        f.write(chunk)
+                f.write(r.text)
             return local_filename
         except requests.HTTPError as e:
             raise PluralsightApiException(e)
