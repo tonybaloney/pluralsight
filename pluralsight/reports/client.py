@@ -126,6 +126,7 @@ class ReportsAPIClient(object):
             r = self.session.get(
                 "{0}{1}".format(self.base_url, url), params=params
             )
+            r.encoding = 'utf-8-sig'
             r.raise_for_status()
             with open(os.path.join(path, local_filename), "w") as f:
                 f.write(r.text)
