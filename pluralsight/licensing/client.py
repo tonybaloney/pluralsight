@@ -28,6 +28,7 @@ class LicensingAPIClient(object):
     """
     The licensing API client
     """
+
     def __init__(self, plan, api_key):
         """
         Instantiate a new reports API client
@@ -45,8 +46,8 @@ class LicensingAPIClient(object):
 
         self.session = requests.Session()
         self.session.headers.update(
-            {'Accept': 'application/json',
-             'Authorization': "Token {0}".format(api_key)})
+            {"Accept": "application/json", "Authorization": "Token {0}".format(api_key)}
+        )
 
         self.invites = InvitesClient(self)
         self.users = UsersClient(self)
@@ -54,8 +55,9 @@ class LicensingAPIClient(object):
 
     def get(self, uri, params=None):
         try:
-            result = self.session.get("{0}/{1}".format(self.base_url, uri),
-                                      params=params)
+            result = self.session.get(
+                "{0}/{1}".format(self.base_url, uri), params=params
+            )
             result.raise_for_status()
 
             return result.json()
@@ -64,8 +66,7 @@ class LicensingAPIClient(object):
 
     def post(self, uri, data=None):
         try:
-            result = self.session.post("{0}/{1}".format(self.base_url, uri),
-                                       json=data)
+            result = self.session.post("{0}/{1}".format(self.base_url, uri), json=data)
             result.raise_for_status()
 
             return result.json()
@@ -74,8 +75,7 @@ class LicensingAPIClient(object):
 
     def put(self, uri, data=None):
         try:
-            result = self.session.put("{0}/{1}".format(self.base_url, uri),
-                                      json=data)
+            result = self.session.put("{0}/{1}".format(self.base_url, uri), json=data)
             result.raise_for_status()
         except requests.HTTPError as e:
             raise PluralsightApiException(e.response.text)

@@ -16,14 +16,7 @@
 
 
 class User(object):
-    def __init__(self,
-                 id,
-                 team_id,
-                 first_name,
-                 last_name,
-                 email,
-                 note,
-                 start_date):
+    def __init__(self, id, team_id, first_name, last_name, email, note, start_date):
         self.id = id
         self.team_id = team_id
         self.first_name = first_name
@@ -34,8 +27,5 @@ class User(object):
 
     def __str__(self):
         return "User '{0} {1}' {2} ({3})".format(
-            self.first_name,
-            self.last_name,
-            self.email,
-            self.id
+            self.first_name, self.last_name, self.email, self.id
         )

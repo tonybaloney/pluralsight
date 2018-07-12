@@ -22,6 +22,7 @@ class InvitesClient(object):
     """
     Invites API
     """
+
     def __init__(self, client):
         self.client = client
 
@@ -52,13 +53,13 @@ class InvitesClient(object):
         """
         params = {}
         if email is not None:
-            params['email'] = email
+            params["email"] = email
         if note is not None:
-            params['note'] = note
+            params["note"] = note
         if team_id is not None:
-            params['teamId'] = team_id
-        invites = self.client.get('invites', params=params)
-        return [self._to_invite(i) for i in invites['data']]
+            params["teamId"] = team_id
+        invites = self.client.get("invites", params=params)
+        return [self._to_invite(i) for i in invites["data"]]
 
     def get_invite(self, id):
         """
@@ -70,8 +71,8 @@ class InvitesClient(object):
         :return: An instance :class:`Invite`
         :rtype: :class:`Invite`
         """
-        invite = self.client.get('invites/{0}'.format(id))
-        return self._to_invite(invite['data'])
+        invite = self.client.get("invites/{0}".format(id))
+        return self._to_invite(invite["data"])
 
     def invite_user(self, email, team_id=None, note=None):
         """
@@ -89,15 +90,9 @@ class InvitesClient(object):
         :return: An instance :class:`Invite`
         :rtype: :class:`Invite`
         """
-        data = {
-            'data': {
-                'email': email,
-                'teamId': team_id,
-                'note': note
-            }
-        }
-        invite = self.client.post('invites', data=data)
-        return self._to_invite(invite['data'])
+        data = {"data": {"email": email, "teamId": team_id, "note": note}}
+        invite = self.client.post("invites", data=data)
+        return self._to_invite(invite["data"])
 
     def update_invite(self, id, note):
         """
@@ -109,12 +104,8 @@ class InvitesClient(object):
         :param note: Additional notes on the user
         :type  note: ``str``
         """
-        data = {
-            'data': {
-                'note': note
-            }
-        }
-        self.client.put('invites/{0}'.format(id), data=data)
+        data = {"data": {"note": note}}
+        self.client.put("invites/{0}".format(id), data=data)
 
     def cancel_invite(self, id):
         """
@@ -125,14 +116,14 @@ class InvitesClient(object):
 
         :rtype: None
         """
-        self.client.delete('invites/{0}'.format(id))
+        self.client.delete("invites/{0}".format(id))
 
     def _to_invite(self, data):
         return Invite(
-            id=data['id'],
-            email=data['email'],
-            team_id=data['teamId'],
-            note=data['note'],
-            send_date=arrow.get(data['sendDate']),
-            expires_on=arrow.get(data['expiresOn'])
+            id=data["id"],
+            email=data["email"],
+            team_id=data["teamId"],
+            note=data["note"],
+            send_date=arrow.get(data["sendDate"]),
+            expires_on=arrow.get(data["expiresOn"]),
         )

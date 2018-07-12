@@ -18,13 +18,7 @@ import six
 
 
 class Invite(object):
-    def __init__(self,
-                 id,
-                 email,
-                 team_id,
-                 note,
-                 send_date,
-                 expires_on):
+    def __init__(self, id, email, team_id, note, send_date, expires_on):
         self.id = id
         self.email = email
         self.team_id = team_id
@@ -33,21 +27,19 @@ class Invite(object):
         self.expires_on = expires_on
 
     def __str__(self):
-        return "Invite to {0} ({1}) with ID: {2}".format(
-            self.email,
-            self.note,
-            self.id)
+        return "Invite to {0} ({1}) with ID: {2}".format(self.email, self.note, self.id)
 
     def generate_url(self, plan):
-        _redirect_url = 'https://app.pluralsight.com/plans-data/invites/{0}/{1}'.format(
-            plan,
-            self.id
+        _redirect_url = "https://app.pluralsight.com/plans-data/invites/{0}/{1}".format(
+            plan, self.id
         )
-        _base_url = 'https://app.pluralsight.com/id/createaccount/business' \
-            '?firstName={0}&lastName={1}&companyEmail={2}&redirectTo={3}'.format(
-                '',
-                '',
+        _base_url = (
+            "https://app.pluralsight.com/id/createaccount/business"
+            "?firstName={0}&lastName={1}&companyEmail={2}&redirectTo={3}".format(
+                "",
+                "",
                 six.moves.urllib.parse.quote(self.email),
-                six.moves.urllib.parse.quote_plus(_redirect_url)
+                six.moves.urllib.parse.quote_plus(_redirect_url),
             )
+        )
         return _base_url

@@ -20,4 +20,4 @@ class PluralsightApiException(Exception):
         self.message = message
         self.uri = uri
         if self.uri:
-            self.message += '({0})'.format(uri)
+            self.message += "({0})".format(uri)

@@ -26,6 +26,7 @@ class ReportsAPIClient(object):
     """
     Reports API client
     """
+
     def __init__(self, plan, api_key):
         """
         Instantiate a new reports API client
@@ -43,8 +44,8 @@ class ReportsAPIClient(object):
 
         self.session = requests.Session()
         self.session.headers.update(
-            {'Accept': 'application/json',
-             'Authorization': "Token {0}".format(api_key)})
+            {"Accept": "application/json", "Authorization": "Token {0}".format(api_key)}
+        )
 
     def download_user_report(self, plan, path):
         """
@@ -58,10 +59,11 @@ class ReportsAPIClient(object):
 
         :returns: The filename
         """
-        return self._download_file("users/{0}".format(plan), 'users.csv', path)
+        return self._download_file("users/{0}".format(plan), "users.csv", path)
 
-    def download_course_completion_report(self, plan, path,
-                                          start_date=None, end_date=None):
+    def download_course_completion_report(
+        self, plan, path, start_date=None, end_date=None
+    ):
         """
         Download the course completion report and store in a file
 
@@ -82,14 +84,15 @@ class ReportsAPIClient(object):
         params = {}
 
         if start_date is not None:
-            params['startDate'] = start_date
+            params["startDate"] = start_date
         if end_date is not None:
-            params['endDate'] = end_date
+            params["endDate"] = end_date
 
-        return self._download_file("course-completion/{0}".format(plan), 'courses.csv', path, params)
+        return self._download_file(
+            "course-completion/{0}".format(plan), "courses.csv", path, params
+        )
 
-    def download_course_usage_report(self, plan, path,
-                                     start_date=None, end_date=None):
+    def download_course_usage_report(self, plan, path, start_date=None, end_date=None):
         """
         Download the course usage report and store in a file
 
@@ -110,19 +113,22 @@ class ReportsAPIClient(object):
         params = {}
 
         if start_date is not None:
-            params['startDate'] = start_date
+            params["startDate"] = start_date
         if end_date is not None:
-            params['endDate'] = end_date
+            params["endDate"] = end_date
 
-        return self._download_file("course-usage/{0}".format(plan), 'course_usage.csv', path, params)
+        return self._download_file(
+            "course-usage/{0}".format(plan), "course_usage.csv", path, params
+        )
 
     def _download_file(self, url, local_filename, path, params=None):
         try:
-            r = self.session.get("{0}{1}".format(self.base_url, url),
-                                 stream=True, params=params)
+            r = self.session.get(
+                "{0}{1}".format(self.base_url, url), stream=True, params=params
+            )
             r.raise_for_status()
             r.encoding = "utf-8-sig"
-            with open(os.path.join(path, local_filename), 'w') as f:
+            with open(os.path.join(path, local_filename), "w") as f:
                 for chunk in r.iter_content(chunk_size=1024, decode_unicode=True):
                     if chunk:  # filter out keep-alive new chunks
                         f.write(chunk)

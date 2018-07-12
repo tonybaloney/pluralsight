@@ -22,11 +22,13 @@ class UsersClient(object):
     """
     Users API
     """
+
     def __init__(self, client):
         self.client = client
 
-    def get_all_users(self, first_name=None, last_name=None, email=None,
-                      note=None, team_id=None):
+    def get_all_users(
+        self, first_name=None, last_name=None, email=None, note=None, team_id=None
+    ):
         """
         Get all users
 
@@ -51,18 +53,18 @@ class UsersClient(object):
         params = {}
 
         if first_name is not None:
-            params['firstName'] = first_name
+            params["firstName"] = first_name
         if last_name is not None:
-            params['lastName'] = last_name
+            params["lastName"] = last_name
         if email is not None:
-            params['email'] = email
+            params["email"] = email
         if note is not None:
-            params['note'] = note
+            params["note"] = note
         if team_id is not None:
-            params['teamId'] = team_id
+            params["teamId"] = team_id
 
-        users = self.client.get('users', params=params)
-        return [self._to_user(i) for i in users['data']]
+        users = self.client.get("users", params=params)
+        return [self._to_user(i) for i in users["data"]]
 
     def get_user(self, id):
         """
@@ -74,8 +76,8 @@ class UsersClient(object):
         :return: An instance :class:`User`
         :rtype: :class:`User`
         """
-        user = self.client.get('users/{0}'.format(id))
-        return self._to_user(user['data'])
+        user = self.client.get("users/{0}".format(id))
+        return self._to_user(user["data"])
 
     def update_user(self, id, team_id, note):
         """
@@ -90,13 +92,8 @@ class UsersClient(object):
         :param note: Additional notes on the user
         :type  note: ``str``
         """
-        data = {
-            'data': {
-                'teamId': team_id,
-                'note': note
-            }
-        }
-        self.client.put('users/{0}'.format(id), data=data)
+        data = {"data": {"teamId": team_id, "note": note}}
+        self.client.put("users/{0}".format(id), data=data)
 
     def delete_user(self, id):
         """
@@ -107,15 +104,15 @@ class UsersClient(object):
 
         :rtype: None
         """
-        self.client.delete('users/{0}'.format(id))
+        self.client.delete("users/{0}".format(id))
 
     def _to_user(self, data):
         return User(
-            data['id'],
-            data['teamId'],
-            data['firstName'],
-            data['lastName'],
-            data['email'],
-            data['note'],
-            arrow.get(data['startDate'])
+            data["id"],
+            data["teamId"],
+            data["firstName"],
+            data["lastName"],
+            data["email"],
+            data["note"],
+            arrow.get(data["startDate"]),
         )

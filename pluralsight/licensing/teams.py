@@ -21,6 +21,7 @@ class TeamsClient(object):
     """
     Teams API
     """
+
     def __init__(self, client):
         self.client = client
 
@@ -37,10 +38,10 @@ class TeamsClient(object):
         params = {}
 
         if name is not None:
-            params['name'] = name
+            params["name"] = name
 
-        teams = self.client.get('teams', params=params)
-        return [self._to_team(i) for i in teams['data']]
+        teams = self.client.get("teams", params=params)
+        return [self._to_team(i) for i in teams["data"]]
 
     def get_team(self, id):
         """
@@ -52,11 +53,8 @@ class TeamsClient(object):
         :return: An instance :class:`Team`
         :rtype: :class:`Team`
         """
-        team = self.client.get('teams/{0}'.format(id))
-        return self._to_team(team['data'])
+        team = self.client.get("teams/{0}".format(id))
+        return self._to_team(team["data"])
 
     def _to_team(self, data):
-        return Team(
-            data['id'],
-            data['name'],
-        )
+        return Team(data["id"], data["name"])
