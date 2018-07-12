@@ -121,9 +121,9 @@ class ReportsAPIClient(object):
             r = self.session.get("{0}{1}".format(self.base_url, url),
                                  stream=True, params=params)
             r.raise_for_status()
-
-            with open(os.path.join(path, local_filename), 'wb') as f:
-                for chunk in r.iter_content(chunk_size=1024):
+            r.encoding = "utf-8-sig"
+            with open(os.path.join(path, local_filename), 'w') as f:
+                for chunk in r.iter_content(chunk_size=1024, decode_unicode=True):
                     if chunk:  # filter out keep-alive new chunks
                         f.write(chunk)
             return local_filename

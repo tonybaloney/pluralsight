@@ -43,6 +43,7 @@ def test_download_user_report():
     with open(report_name, 'r') as f:
         reader = csv.DictReader(f)
         data = [d for d in reader]
+        assert data[0]['UserId'] == '12919ae2-c23f-480a-96a8-1534293b0bbe'
         assert data[0]['FirstName'] == 'Sandeep'
         assert data[1]['FirstName'] == 'Imranullah'
 

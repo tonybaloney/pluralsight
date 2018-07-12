@@ -2,6 +2,11 @@
 History
 =======
 
+1.2.1 (12th July 2018)
+----------------------
+
+* Decode report download to remove BOM from Python 3
+
 1.2.0 (5th Feb 2018)
 --------------------
 
