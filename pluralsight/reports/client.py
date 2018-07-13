@@ -128,7 +128,7 @@ class ReportsAPIClient(object):
             )
             r.encoding = 'utf-8-sig'
             r.raise_for_status()
-            with open(os.path.join(path, local_filename), "w") as f:
+            with open(os.path.join(path, local_filename), "w", encoding='utf-8') as f:
                 f.write(r.text)
             return local_filename
         except requests.HTTPError as e:
