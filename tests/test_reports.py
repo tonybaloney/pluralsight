@@ -20,6 +20,7 @@ from requests_staticmock import (Adapter,
 from requests_staticmock.responses import StaticResponseFactory
 from six import b
 import csv
+import os
 import pytest
 from pluralsight.exceptions import PluralsightApiException
 from pluralsight.reports.client import ReportsAPIClient, BASE_URL
@@ -38,32 +39,33 @@ def test_base_url():
     assert BASE_URL in client.base_url
 
 
-def test_download_user_report():
-    report_name = client.download_user_report(TEST_PLAN, '')
-    with open(report_name, 'r') as f:
+def test_download_user_report(tmpdir):
+    report_name = client.download_user_report(TEST_PLAN, tmpdir)
+    with open(os.path.join(tmpdir, report_name), 'r') as f:
         reader = csv.DictReader(f)
         data = [d for d in reader]
         assert data[0]['UserId'] == '12919ae2-c23f-480a-96a8-1534293b0bbe'
         assert data[0]['FirstName'] == 'Sandeep'
         assert data[1]['FirstName'] == 'Imranullah'
+        assert data[2]['LastName'] == u'Nový'
 
 
-def test_download_course_completion_report():
-    report_name = client.download_course_completion_report(TEST_PLAN, '',
+def test_download_course_completion_report(tmpdir):
+    report_name = client.download_course_completion_report(TEST_PLAN, tmpdir,
                                                            start_date='2016-04-02',
                                                            end_date='2016-05-02')
-    with open(report_name, 'r') as f:
+    with open(os.path.join(tmpdir, report_name), 'r') as f:
         reader = csv.DictReader(f)
         data = [d for d in reader]
         assert data[0]['FirstName'] == 'Jason'
         assert data[1]['FirstName'] == 'Alex'
 
 
-def test_download_course_usage_report():
-    report_name = client.download_course_usage_report(TEST_PLAN, '',
+def test_download_course_usage_report(tmpdir):
+    report_name = client.download_course_usage_report(TEST_PLAN, tmpdir,
                                                       start_date='2016-04-02',
                                                       end_date='2016-05-02')
-    with open(report_name, 'r') as f:
+    with open(os.path.join(tmpdir, report_name), 'r') as f:
         reader = csv.DictReader(f)
         data = [d for d in reader]
         assert data[0]['FirstName'] == 'Sam'
