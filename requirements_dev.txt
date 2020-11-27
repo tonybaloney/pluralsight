@@ -1,5 +1,5 @@
 bumpversion==0.6.0
-wheel==0.23.0
+wheel==0.35.1
 watchdog==0.10.4
 flake8==3.8.2
 tox==2.1.1
