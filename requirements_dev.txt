@@ -1,6 +1,6 @@
 bumpversion==0.6.0
 wheel==0.23.0
-watchdog==1.0.1
+watchdog==2.0.0
 flake8==3.8.2
 tox==2.1.1
 coverage==4.0
