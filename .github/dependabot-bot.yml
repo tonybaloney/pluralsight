@@ -7,3 +7,4 @@ safe:
  - flake8
  - docutils
  - watchdog
+ - argparse
